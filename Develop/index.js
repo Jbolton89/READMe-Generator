@@ -1,8 +1,11 @@
 // TODO: Include packages needed for this application
 const fs = require("fs"); 
 const inquirer = require('inquirer');
+const fetch = require('node-fetch');
+const util = require('util');
+const writeFileAsync = util.promisify(fs.writeFile);
 // TODO: Create an array of questions for user input
-const questions = [
+const queries = [
     {
         type: "input",
         name: "title",
@@ -51,17 +54,25 @@ const questions = [
 ];
 
 inquirer
-    .prompt(questions)
-    .then(function(data){ 
-        const url = `https://api.github.com/users/${data.username}`;
-        fetch(url).then()
+    .prompt(queries)
+    .then(function(results){ 
+        const url = `https://api.github.com/users/${results.username}`;
+        fetch(url).then(function(result) {
+            const githubInformation = { 
+
+            }
+
+        })
 
     }
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
-
-fs.writeFile("READMe.MD", )
+writeFileAsync("READMe.MD", generate(results, githubInformation), function(err) {
+    if (error) { 
+        console.error;
+    }; 
+    console.log("READMe has been successfully created");
+}
 
 // TODO: Create a function to initialize app
 function init() {}
