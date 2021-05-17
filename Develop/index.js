@@ -5,6 +5,7 @@ const inquirer = require('inquirer');
 const fetch = require('node-fetch');
 const util = require('util');
 const writeFileAsync = util.promisify(fs.writeFile);
+const genMarkdown = require('./utils/generateMarkdown');
 // TODO: Create an array of questions for user input
 const queries = [
     {
@@ -68,7 +69,7 @@ inquirer
             };
 
 // TODO: Create a function to write README file
-writeFileAsync("READMe.MD", generate(results, githubInformation), function(err) {
+writeFileAsync("READMe.MD", genMarkdown(results, githubInformation), function(err) {
     err ? console.error : console.log("READMe has been successfully created");
 });
 
