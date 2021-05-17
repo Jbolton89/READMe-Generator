@@ -1,6 +1,5 @@
 // TODO: Include packages needed for this application
 const fs = require("fs"); 
-const { ServerResponse } = require("http");
 const inquirer = require('inquirer');
 const fetch = require('node-fetch');
 const util = require('util');
@@ -59,7 +58,7 @@ inquirer
     .prompt(queries)
     .then(function(results){ 
         const url = `https://api.github.com/users/${results.username}`;
-        fetch(url).then(function(result) {
+        fetch(url).then(function(Response) {
             const githubInformation = {
                 email: fetch.Response.results.email, 
                 image:fetch.Response.results.avatar_url, 
