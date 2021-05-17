@@ -54,27 +54,27 @@ const queries = [
     }
 ];
 
-inquirer.prompt(queries)
-    .then(function (results) {
-        const url = `https://api.github.com/users/${results.username}`;
-        fetch(url).then(function (result) {
-            const githubInformation = {
-                email: fetch.Response.results.email,
-                image: fetch.Response.results.avatar_url,
-                name: fetch.Response.results.name,
-                profile: fetch.Response.results.html_url,
 
-            };
+
+function init() {
+    inquirer.prompt(queries)
+        .then(function (results) {
+            const url = `https://api.github.com/users/${results.username}`;
+            fetch(url).then(function (results) {
+                const githubInformation = {
+                    email: fetch.Response.results.email,
+                    image: fetch.Response.results.avatar_url,
+                    name: fetch.Response.results.name,
+                    profile: fetch.Response.results.html_url,
+
+                };
+                writeFileAsync("READMe.MD", genMarkdown(results, githubInformation), function (err) {
+                    err ? console.error : console.log("READMe has been successfully created")
+                        .catch((err) => console.log(err));
+                })
+            });
+
         })
-    })
-// TODO: Create a function to write README file
-writeFileAsync("READMe.MD", genMarkdown(results, githubInformation), function (err) {
-    err ? console.error : console.log("READMe has been successfully created");
-});
+}
 
-
-// TODO: Create a function to initialize app
-function init() { }
-
-// Function call to initialize app
 init();
