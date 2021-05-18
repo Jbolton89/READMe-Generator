@@ -1,10 +1,10 @@
-// TODO: Include packages needed for this application
+
 const fs = require("fs");
 const inquirer = require('inquirer');
 const fetch = require('node-fetch');
 const util = require('util');
-const writeFileAsync = util.promisify(fs.writeFile);
-// const genMarkdown = require('./utils/generateMarkdown');
+// const writeFileAsync = util.promisify(fs.writeFile);
+const genMarkdown = require('./utils/generateMarkdown');
 // TODO: Create an array of questions for user input
 const queries = [
     {
