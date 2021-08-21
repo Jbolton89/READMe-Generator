@@ -85,7 +85,7 @@ function init() {
                 });
                 
 
-                fs.writeFile("README.md", genMarkdown(results, ), function (err) {
+                fs.writeFile("DemoREADME.md", genMarkdown(results, ), function (err) {
                     err ? console.error : console.log("READMe has been successfully created")
                         .catch((err) => console.log(err));
                 })
