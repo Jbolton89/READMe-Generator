@@ -1,13 +1,11 @@
-
 const fs = require("fs");
 const inquirer = require('inquirer');
 const fetch = require('node-fetch');
 const util = require('util');
 // const writeFileAsync = util.promisify(fs.writeFile);
 const genMarkdown = require('./utils/generateMarkdown');
-// TODO: Create an array of questions for user input
-const queries = [
-    {
+var githubInformation;
+const queries = [{
         type: "input",
         name: "title",
         message: "What is the title of your project?"
@@ -68,26 +66,31 @@ const queries = [
 
 
 
+
+
 function init() {
     inquirer.prompt(queries)
         .then(function (results) {
             console.log("Results are ", results);
             const url = `https://api.github.com/users/${results.username}`;
             fetch(url).then(function (res) {
-                res.json().then(function(res1) {
-                console.log ("res is ", res1)
-                const githubInformation = {
-                    email: res1.email,
-                    image: res1.avatar_url,
-                    name: res1.name,
-                    profile: res1.html_url,
-                }
-                });
-                
+                res.json().then(function (res1) {
+                    console.log("res is ", res1)
+                    return githubInformation = {
+                        email: res1.email,
+                        image: res1.avatar_url,
+                        name: res1.name,
+                        profile: res1.html_url,
+                    }
+                }).then(info => {
+                    console.log("Here is the new info", info)
 
-                fs.writeFile("DemoREADME.md", genMarkdown(results, ), function (err) {
-                    err ? console.error : console.log("READMe has been successfully created")
-                        .catch((err) => console.log(err));
+
+
+                    fs.writeFile("DemoREADME.md", genMarkdown(results, githubInformation), function (err) {
+                        err ? console.error : console.log("READMe has been successfully created")
+                           
+                    })
                 })
             });
 

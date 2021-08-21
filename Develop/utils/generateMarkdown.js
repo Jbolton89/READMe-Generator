@@ -109,7 +109,7 @@ ${results.test}
 
 ![IMAGE](${results.image})
 ${results.name}
-[PROFILE](${githubInformation.user})
+[PROFILE](${githubInformation.username})
 <${githubInformation.email}></$>
 
 
