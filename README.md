@@ -22,9 +22,9 @@ A simple README generator that will create a readme with latest conventions. Use
  # Useage
 Answer a few simple questions, and this application will fill in the README file for you.
  
- ![Screenshot1]()
+ ![Screenshot1](./Develop/capture1.png)
  
- ![Screenshot2]()
+ ![Screenshot2](./Develop/capture2.png)
  
 
  # Contributing
