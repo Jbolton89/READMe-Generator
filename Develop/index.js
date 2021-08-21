@@ -72,18 +72,20 @@ function init() {
     inquirer.prompt(queries)
         .then(function (results) {
             console.log("Results are ", results);
-            const url = `https://api.github.com/user/${results.username}`;
+            const url = `https://api.github.com/users/${results.username}`;
             fetch(url).then(function (res) {
                 res.json().then(function(res1) {
                 console.log ("res is ", res1)
                 const githubInformation = {
-                    email: fetch.Response.res1.email,
-                    image: fetch.Response.res1.avatar_url,
-                    name: fetch.Response.res1.name,
-                    profile: fetch.Response.res1.html_url,
+                    email: res1.email,
+                    image: res1.avatar_url,
+                    name: res1.name,
+                    profile: res1.html_url,
                 }
                 });
-                fs.writeFile("READMe.MD", genMarkdown(results), function (err) {
+                
+
+                fs.writeFile("README.md", genMarkdown(results, ), function (err) {
                     err ? console.error : console.log("READMe has been successfully created")
                         .catch((err) => console.log(err));
                 })
