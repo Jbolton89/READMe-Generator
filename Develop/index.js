@@ -28,9 +28,21 @@ const queries = [
         message: "what is the project usage"
     },
     {
-        type: "input",
-        name: "license",
-        message: "Please provide a license and/or badge link"
+        type: "rawlist",
+        name: "badge",
+        message: "Please select your license from the following list -",
+        choices: [
+            "MIT",
+            "Apache",
+            "Boost",
+            "GNU GPL",
+            "Eclipse",
+            "IBM",
+            "Mozilla",
+            "The Unlicense",
+            "None",
+
+        ],
     },
     {
         type: "input",
@@ -59,16 +71,19 @@ const queries = [
 function init() {
     inquirer.prompt(queries)
         .then(function (results) {
-            const url = `https://api.github.com/users/${results.username}`;
-            fetch(url).then(function (results) {
+            console.log("Results are ", results);
+            const url = `https://api.github.com/user/${results.username}`;
+            fetch(url).then(function (res) {
+                res.json().then(function(res1) {
+                console.log ("res is ", res1)
                 const githubInformation = {
-                    email: fetch.Response.results.email,
-                    image: fetch.Response.results.avatar_url,
-                    name: fetch.Response.results.name,
-                    profile: fetch.Response.results.html_url,
-
-                };
-                fs.writeFile("READMe.MD", genMarkdown(results, githubInformation), function (err) {
+                    email: fetch.Response.res1.email,
+                    image: fetch.Response.res1.avatar_url,
+                    name: fetch.Response.res1.name,
+                    profile: fetch.Response.res1.html_url,
+                }
+                });
+                fs.writeFile("READMe.MD", genMarkdown(results), function (err) {
                     err ? console.error : console.log("READMe has been successfully created")
                         .catch((err) => console.log(err));
                 })
