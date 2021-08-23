@@ -107,10 +107,10 @@ ${results.test}
 
 ## GitHub 
 
-![IMAGE](${results.image})
-${results.name}
-[PROFILE](${githubInformation.username})
-<${githubInformation.email}></$>
+![IMAGE](${githubInformation.image})
+${results.username}
+[PROFILE](${githubInformation.profile})
+<${results.email}></$>
 
 
 `;

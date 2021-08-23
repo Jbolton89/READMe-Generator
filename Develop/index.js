@@ -87,10 +87,11 @@ function init() {
 
 
 
-                    fs.writeFile("DemoREADME.md", genMarkdown(results, githubInformation), function (err) {
+                    fs.writeFile("DemoREADME.md", genMarkdown(results, info), function (err) {
                         err ? console.error : console.log("READMe has been successfully created")
                            
                     })
+                    
                 })
             });
 

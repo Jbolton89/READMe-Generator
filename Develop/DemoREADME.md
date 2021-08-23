@@ -39,9 +39,9 @@ gg
 
 ## GitHub 
 
-![IMAGE](undefined)
-undefined
-[PROFILE](undefined)
-<null></$>
+![IMAGE](https://avatars.githubusercontent.com/u/77908382?v=4)
+jbolton89
+[PROFILE](https://github.com/Jbolton89)
+<jasonbolton89@gmail.com></$>
 
 
